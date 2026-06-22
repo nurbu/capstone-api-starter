@@ -21,7 +21,9 @@ public class CategoryService {
 
     public Category getById(int categoryId) {
         // get category by id
-        return null;
+        Category category = categoryRepository.findById(categoryId);
+        if (category == null) return null;
+        return category;
     }
 
     public Category create(Category category) {
