@@ -9,6 +9,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.yearup.models.Product;
 import org.yearup.repository.ProductRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
@@ -23,6 +25,31 @@ class ProductServiceTest {
 
     @InjectMocks
     private ProductService productService;
+
+    @Test
+    void search() {
+        //Arrange
+
+        Product product1 = new Product();
+        product1.setStock(1);
+        product1.setFeatured(true);
+
+        Product product2 = new Product();
+        product2.setStock(2);
+        product2.setFeatured(false);
+
+        ArrayList<Product> products = new ArrayList<>();
+
+        products.add(product1);
+        products.add(product2);
+        when(productRepository.findAll()).thenReturn(products);
+
+        //Act
+        List<Product> list = productService.search(null, null, null, null);
+        //Assert
+        Assertions.assertEquals(products.size(), list.size());
+        verify(productRepository).findAll();
+    }
 
     @Test
     void saveProduct() {
