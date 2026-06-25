@@ -27,6 +27,7 @@ public class ShoppingCartController {
     }
 
     // each method in this controller requires a Principal object as a parameter
+
     @GetMapping
     public ShoppingCart getCart(Principal principal) {
         // get the currently logged in username
@@ -56,6 +57,7 @@ public class ShoppingCartController {
     // add a PUT method to update an existing product in the cart - the url should be
     // https://localhost:8080/cart/products/15  (15 is the productId to be updated)
     // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated; return the cart (200 OK)
+
     @PutMapping("products/{productId}")
     public ShoppingCart updateProduct(Principal principal, @PathVariable Integer productId, @RequestBody ShoppingCartItem item) {
         String userName = principal.getName();
@@ -67,6 +69,7 @@ public class ShoppingCartController {
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
+
     @DeleteMapping
     public ShoppingCart clearCart(Principal principal) {
         String userName = principal.getName();

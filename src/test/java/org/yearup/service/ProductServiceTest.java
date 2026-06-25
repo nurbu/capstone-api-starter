@@ -26,6 +26,10 @@ class ProductServiceTest {
     @InjectMocks
     private ProductService productService;
 
+    /*
+     * Uses the created array products when .findAll() is called
+     * and return that and search through that list.
+     */
     @Test
     void search() {
         //Arrange
@@ -51,6 +55,10 @@ class ProductServiceTest {
         verify(productRepository).findAll();
     }
 
+    /**
+     * When using findById auto returns product1.
+     * Also, when saving it auto returns the product itself.
+     */
     @Test
     void saveProduct() {
         // Arrange

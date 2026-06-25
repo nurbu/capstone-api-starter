@@ -23,7 +23,7 @@ public class ProductService {
                 .filter(p -> minPrice == null || p.getPrice() >= minPrice)
                 .filter(p -> maxPrice == null || p.getPrice() <= maxPrice)
                 .filter(p -> subCategory == null || subCategory.equalsIgnoreCase(p.getSubCategory()))
-                .toList();
+                .toList(); // Removed the filter of having to be featured.
     }
 
     public List<Product> listByCategoryId(int categoryId) {
