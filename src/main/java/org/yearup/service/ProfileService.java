@@ -16,7 +16,24 @@ public class ProfileService {
         return profileRepository.save(profile);
     }
 
+    /**
+     * @param userId Use the userId to find the profile from the table
+     * @return the Profile object
+     */
     public Profile getByUserId(int userId) {
         return profileRepository.findById(userId).orElse(null);
+    }
+
+    /**
+     * Set the user Id for the profile to be able to save the updated profile
+     * which will override the old profile info.
+     *
+     * @param userId
+     * @param profile
+     * @return
+     */
+    public Profile updateProfile(int userId, Profile profile) {
+        profile.setUserId(userId);
+        return profileRepository.save(profile);
     }
 }
