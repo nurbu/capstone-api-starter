@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.yearup.models.Category;
 import org.yearup.models.Product;
 import org.yearup.service.CategoryService;
@@ -35,7 +36,9 @@ public class CategoriesController {
     @GetMapping("/{id}")
     public Category getById(@PathVariable int id) {
         // get the category by id
-        return categoryService.getById(id);
+        Category category = categoryService.getById(id);
+        if (category != null) return category;
+        else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
     // the url to return all products in category 1 would look like this

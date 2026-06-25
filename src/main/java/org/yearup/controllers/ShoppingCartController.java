@@ -49,7 +49,7 @@ public class ShoppingCartController {
         User user = userService.getByUserName(userName);
         int userId = user.getId();
 
-        ShoppingCart cart = shoppingCartService.getByUserId(userId);
+        ShoppingCart cart = shoppingCartService.addProduct(userId, productId);
         return new ResponseEntity<>(cart, HttpStatus.CREATED);
     }
 
@@ -67,5 +67,12 @@ public class ShoppingCartController {
 
     // add a DELETE method to clear all products from the current users cart
     // https://localhost:8080/cart  - return the (now empty) cart so the front end can refresh it (200 OK)
+    @DeleteMapping
+    public ShoppingCart clearCart(Principal principal) {
+        String userName = principal.getName();
+        User user = userService.getByUserName(userName);
+        int userId = user.getId();
 
+        return shoppingCartService.clearCart(userId);
+    }
 }
