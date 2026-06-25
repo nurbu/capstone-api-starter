@@ -38,5 +38,18 @@ public class ShoppingCartService {
         return shoppingCart;
     }
 
-    // add additional methods here
+    public ShoppingCart addProduct(int userId, int productId) {
+        CartItem currentItem = shoppingCartRepository.findByUserId(userId).stream().findFirst().orElse(null);
+
+        if (currentItem == null) {
+            CartItem newItem = new CartItem();
+            newItem.setUserId(userId);
+            newItem.setProductId(productId);
+            shoppingCartRepository.save(newItem);
+        } else {
+            currentItem.setQuantity(currentItem.getQuantity() + 1);
+            shoppingCartRepository.save(currentItem);
+        }
+        return getByUserId(userId);
+    }
 }
