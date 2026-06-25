@@ -52,4 +52,13 @@ public class ShoppingCartService {
         }
         return getByUserId(userId);
     }
+
+    public ShoppingCart updateQuantity(int userId, int productId, int quantity) {
+        CartItem currentItem = shoppingCartRepository.findByUserIdAndProductId(userId, productId);
+        if (currentItem != null) {
+            currentItem.setQuantity(quantity);
+            shoppingCartRepository.save(currentItem);
+        }
+        return getByUserId(userId);
+    }
 }
