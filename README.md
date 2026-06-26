@@ -1,4 +1,4 @@
-# Concert Tracker
+# Easy Shop
 
 ## Description of the Project
 
@@ -6,6 +6,26 @@ A simple online store that's built using spring boot, JPA, and includes a fronte
 Allows users to shop online with their own account. Users are allowed to filter products, login, update their profile,
 and add products to cart. Also, for admins they are able to create, update, and delete categories of products
 as needed.
+
+## User Stories
+
+- Search leaves products out
+- Product edits don't fully save
+- As a user, I would like to view all the categories, so I see the different categories the store has.
+- As a user, I want the option of seeing a single category by Id, so I can see the category the Id represents.
+- As a user, I want to be able to see the products from a specific category, so I can find products I'm looking for
+  quickly.
+- As a admin, I want to be able to create a new category, so I can have new ways to organize products.
+- As a admin, I wanna be able to update things about a categories, so the categories properties are up to date.
+- As a admin, I want to be able to delete a category, so that I can remove categories we don't need.
+- As a user, I want to be able to see the products in my cart, so I know what's in my cart before I checkout.
+- As a user, I wanna be able to add products to cart, so I can buy them later.
+- As a user, I wanna be able to update my quantity in my cart, so I can change how much of a product I buy later.
+- As a user, I wanna be able to clear out my entire cart, so I can start all over.
+- Setup the ShoppingCartController
+- As a user, I wanna be able to view my profile info, so I can see my current profile info.
+- As a user, I wanna be able to update my profile, so I can keep up info up to date.
+- Create a ProfileController
 
 ## Setup
 
